@@ -27,7 +27,7 @@ class _NaviState extends State<Navi> {
   void initState() {
     pages
       ..add(ClassRoom())
-    //   ..add(CampusScreen())
+      //   ..add(CampusScreen())
       ..add(MessageScreen())
       ..add(MyScreen());
   }
@@ -40,15 +40,16 @@ class _NaviState extends State<Navi> {
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         // 底部导航
+        backgroundColor: Colors.white,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.school),
             title: Text('教室'),
           ),
-        //   BottomNavigationBarItem(
-        //     icon: Icon(Icons.send),
-        //     title: Text('校园讯'),
-        //   ),
+          //   BottomNavigationBarItem(
+          //     icon: Icon(Icons.send),
+          //     title: Text('校园讯'),
+          //   ),
           BottomNavigationBarItem(
             icon: Icon(Icons.message),
             title: Text('消息'),
@@ -61,6 +62,7 @@ class _NaviState extends State<Navi> {
         currentIndex: _selectedIndex,
         fixedColor: Colours.app_nv,
         onTap: _onItemTapped,
+
         // 这样才会显示 3个以上item
         type: BottomNavigationBarType.fixed,
       ),

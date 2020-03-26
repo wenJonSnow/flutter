@@ -11,103 +11,44 @@ class _ClassRoomState extends State<ClassRoom> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('教室'),
-          flexibleSpace: Container(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xFF8975FF), Color(0xFFFF69A7)],
-                //   begin: Alignment.topLeft,
-                //   //end: Alignment.centerLeft
-                //   end: Alignment.bottomRight
-              ),
+      appBar: AppBar(
+        title: Text('教室'),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFF8975FF), Color(0xFFFF69A7)],
+              //   begin: Alignment.topLeft,
+              //   //end: Alignment.centerLeft
+              //   end: Alignment.bottomRight
             ),
           ),
-          leading: Builder(builder: (context) {
-            return IconButton(
-              icon: Icon(Icons.dashboard, color: Colors.white), //自定义图标
-              onPressed: () {
-                // 打开抽屉菜单
-              },
-            );
-          }),
-          actions: <Widget>[
-            //导航栏右侧菜单
-            FlatButton(
-              color: Color(0x000000),
-              highlightColor: Color(0x000000),
-              splashColor: Color(0x000000),
-              child: Image.asset(
-                Utils.getImgPath('search@3x'), // 搜索图片
-              ),
-              onPressed: () {},
-            ),
-          ],
-          elevation: 0,
         ),
-        body: Content());
+        leading: Builder(builder: (context) {
+          return IconButton(
+            icon: Icon(Icons.dashboard, color: Colors.white), //自定义图标
+            onPressed: () {
+              // 打开抽屉菜单
+            },
+          );
+        }),
+        actions: <Widget>[
+          //导航栏右侧菜单
+          FlatButton(
+            color: Color(0x000000),
+            highlightColor: Color(0x000000),
+            splashColor: Color(0x000000),
+            child: Image.asset(
+              Utils.getImgPath('search@3x'), // 搜索图片
+            ),
+            onPressed: () {},
+          ),
+        ],
+        elevation: 0,
+      ),
+      body: Content(),
+    );
   }
 }
-
-// class _ClassRoomState extends State<ClassRoom> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Stack(
-//       alignment: Alignment.center,
-//       children: <Widget>[
-//         //顶部背景径向渐变内容
-//         Container(
-//           // margin: EdgeInsets.only(top: 50.0, left: 120.0), //容器外填充
-//           constraints: BoxConstraints.tightFor(
-//               width: double.infinity, height: 240.0), //卡片大小
-//           decoration: BoxDecoration(
-//             //背景装饰
-//             gradient: LinearGradient(
-//                 //背景径向渐变
-//                 colors: [Color(0xFF8975FF), Color(0xFFFF69A7)],
-//                 begin: Alignment.topLeft,
-//                 //end: Alignment.centerLeft
-//                 end: Alignment.bottomRight //效果同上
-//                 ),
-//           ),
-//         ),
-//         // 左边按钮图标
-//         Positioned(
-//           top: 40.0,
-//           left: 20,
-//           child: IconButton(
-//             icon: Icon(Icons.add, color: Colors.white),
-//             onPressed: () {},
-//           ),
-//         ),
-//         //右边搜索按钮
-//         Positioned(
-//             top: 40.0,
-//             right: 20,
-//             child: FlatButton(
-//               color: Color(0x000000),
-//               highlightColor: Color(0x000000),
-//               splashColor: Color(0x000000),
-//               child: Image.asset(
-//                 Utils.getImgPath('search@3x'), // 搜索图片
-//               ),
-//               onPressed: () {},
-//             )),
-//         //学生背景图片
-//         Positioned(
-//           bottom: 1.0,
-//           child: Image.asset(
-//             Utils.getImgPath('bgLog@3x'), // 登录页背景图片
-//             width: 300,
-//             height: 200,
-//             // fit: BoxFit.fill
-//           ),
-//         ),
-//         // Content()
-//       ],
-//     );
-//   }
-// }
 
 // 内容主题
 class Content extends StatefulWidget {
