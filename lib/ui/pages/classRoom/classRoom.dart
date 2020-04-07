@@ -139,7 +139,7 @@ class _ContentState extends State<Content> {
     },
   ];
 
-  Widget __buildListItem(index) {
+  Widget _buildListItem(index) {
     Map item = _tapeData[index];
     return Item(itemData: item);
   }
@@ -174,7 +174,7 @@ class _ContentState extends State<Content> {
               ),
             );
           } else {
-            return this.__buildListItem(index);
+            return _buildListItem(index);
           }
         });
   }
@@ -196,11 +196,6 @@ class _ItemState extends State<Item> {
 
     return Container(
       height: itemData['picurl'] == '' ? 160 : 300,
-      //   margin: EdgeInsets.only(top: 10.0), //容器外填充
-      // padding: EdgeInsets.all(10.0),
-      //   color: Colors.white,
-      //   decoration:BoxDecoration(
-      //   ),
       decoration: BoxDecoration(
         //背景装饰
         color: Colors.white,
@@ -210,15 +205,6 @@ class _ItemState extends State<Item> {
             width: 1.0,
           ),
         ),
-        // boxShadow: [
-        //   //卡片阴影
-        //   BoxShadow(
-        //       color: Color(0xFF9C92FF),
-        //       offset: Offset(20.0, 4.0),
-        //       blurRadius: 8.0
-        //       // spreadRadius:4.0
-        //       )
-        // ],
       ),
       child: Stack(
         // alignment: Alignment.centerLeft, //指定未定位或部分定位widget的对齐方式

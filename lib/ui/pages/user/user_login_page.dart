@@ -113,7 +113,7 @@ class LoginBody extends StatelessWidget {
                 ],
               ),
               Gaps.vGap20,
-              FlatButton(           
+              FlatButton(
                 color: Color(0x000000),
                 // highlightColor: Colors.blue[700],
                 // colorBrightness: Brightness.dark,

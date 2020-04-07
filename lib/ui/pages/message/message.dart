@@ -28,9 +28,13 @@ class MessageScreenState extends State<MessageScreen> {
             splashColor: Color(0x000000),
             child: IconButton(
               icon: Icon(Icons.search, color: Colors.black), //自定义图标
-              onPressed: () {},
+              onPressed: () {
+                print(1);
+              },
             ),
-            onPressed: () {},
+            onPressed: () {
+              //   print(1);
+            },
           ),
         ],
       ),
@@ -128,9 +132,34 @@ class _ContentState extends State<Content> {
       'picurl': 'xueshen2',
       'release': true
     },
+    {
+      'name': '互撸娃大金刚',
+      'pic': '',
+      'partake': '53',
+      'time': '2020.02.14 12:00',
+      'msg': '我对你的思念已经无法自拔！',
+      'location': '山东大学',
+      'num': '15',
+      'total': '20',
+      'picurl': 'xueshen2',
+      'release': true
+    },
+    {
+      'name': '互撸娃大金刚',
+      'pic': '',
+      'partake': '53',
+      'time': '2020.02.14 12:00',
+      'msg': '我对你的思念已经无法自拔！',
+      'location': '山东大学',
+      'num': '15',
+      'total': '20',
+      'picurl': 'xueshen2',
+      'release': true
+    },
   ];
 
-  Widget __buildListItem(index) {
+  //每条渲染方法
+  Widget _buildListItem(index) {
     Map item = _tapeData[index];
     return Item(itemData: item);
   }
@@ -141,7 +170,7 @@ class _ContentState extends State<Content> {
         itemCount: _tapeData.length,
         itemExtent: 80.0, //强制高度为50.0
         itemBuilder: (BuildContext context, int index) {
-          return __buildListItem(index);
+          return _buildListItem(index);
         });
   }
 }
