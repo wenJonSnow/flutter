@@ -1,43 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:male_flutter_app/common/component_index.dart';
 
-import 'package:male_flutter_app/ui/pages/my/PaperItem.dart';
-import 'package:male_flutter_app/ui/pages/my/HaoYouItem.dart';
-import 'package:male_flutter_app/ui/pages/my/TouKanItem.dart';
+import 'package:male_flutter_app/ui/pages/othersPage/PaperItem.dart';
+import 'package:male_flutter_app/ui/pages/othersPage/TouKanItem.dart';
 
 //我的
-class MyScreen extends StatefulWidget {
+class OthersPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => MyScreenState();
+  State<StatefulWidget> createState() => OthersPageState();
 }
 
-class MyScreenState extends State<MyScreen> {
+class OthersPageState extends State<OthersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0, // 导航栏阴影
         title: Text(
-          '我的',
+          '无心人主页',
           style: TextStyle(color: Colors.black, fontSize: 18),
         ),
         backgroundColor: Colors.white,
-        automaticallyImplyLeading: false, //如果leading为null，是否自动实现默认的leading按钮
-        actions: <Widget>[
-          //导航栏右侧菜单
-          FlatButton(
-            color: Color(0x000000),
-            highlightColor: Color(0x000000),
-            splashColor: Color(0x000000),
-            child: Image.asset(
-              Utils.getImgPath('setting@3x'),
-              width: 20.0,
-            ),
-            onPressed: () {
-              print(1);
-            },
-          ),
-        ],
+        leading: Builder(builder: (context) {
+          return FlatButton(
+              color: Color(0x000000),
+              highlightColor: Color(0x000000),
+              splashColor: Color(0x000000),
+              child: Image.asset(
+                Utils.getImgPath('back@3x'),
+                width: 11.0,
+                height: 19.0,
+              ),
+              onPressed: () {
+                // 返回
+                Navigator.pop(context);
+              });
+        }),
       ),
       body: Content(),
     );
@@ -134,41 +132,6 @@ class _ContentState extends State<Content> {
     return PaperItem(itemData: item);
   }
 
-// 好友列表数据
-  List _haoYouData = [
-    {
-      'name': '我的小猫',
-      'sex': 0,
-      'school': '中南民族大学' //0 女  ，1 男
-    },
-    {
-      'name': '我的小猫111',
-      'sex': 1,
-      'school': '中南民族大学' //0 女  ，1 男
-    },
-    {
-      'name': '我的小猫',
-      'sex': 0,
-      'school': '中南民2族大学' //0 女  ，1 男
-    },
-    {
-      'name': '我的小猫',
-      'sex': 0,
-      'school': '中南民族大学' //0 女  ，1 男
-    },
-    {
-      'name': '我的小猫',
-      'sex': 0,
-      'school': '中南民族大学' //0 女  ，1 男
-    },
-  ];
-
-  // 渲染好友数据
-  Widget _buildHaoYouItem(index) {
-    Map item = _haoYouData[index];
-    return HaoYouItem(itemData: item);
-  }
-
 // 偷看数据
   List _touKanData = [
     {
@@ -257,7 +220,6 @@ class _ContentState extends State<Content> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.end,
-                            // mainAxisSize: MainAxisSize.max,
                             children: <Widget>[
                               // 左边图片
                               Image.asset(
@@ -269,73 +231,37 @@ class _ContentState extends State<Content> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: <Widget>[
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: <Widget>[
-                                      Text(
-                                        userData['name'],
-                                        style: TextStyle(
-                                          color: Color(0xFF333333),
-                                          fontSize: 20.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      Gaps.vGap20,
-                                      Text(
-                                        userData['school'],
-                                        style: TextStyle(
-                                          color: Color(0xFF999999),
-                                          fontSize: 15.0,
-                                        ),
-                                      ),
-                                      Gaps.vGap20,
-                                      Row(
-                                        children: <Widget>[
-                                          Padding(
-                                            padding:
-                                                EdgeInsets.only(right: 10.0),
-                                            child: Image.asset(
-                                              Utils.getImgPath(
-                                                  userData['sex'] == 0
-                                                      ? 'female_icon@3x'
-                                                      : 'male_icon@3x'),
-                                              width: 16.0,
-                                            ),
-                                          ),
-                                          Text(
-                                            userData['age'],
-                                            style: TextStyle(
-                                              color: Color(0xFF333333),
-                                              fontSize: 15.0,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Gaps.vGap20,
-                                      Gaps.vGap20,
-                                    ],
+                                  Text(
+                                    userData['name'],
+                                    style: TextStyle(
+                                      color: Color(0xFF333333),
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-
-                                  // 认证
-                                  DecoratedBox(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFF2F2F2),
-                                        borderRadius:
-                                            BorderRadius.circular(4.0), //3像素圆角
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: 12.0, vertical: 2.0),
-                                        child: Text(
-                                          userData['Authentication'] == true
-                                              ? '已认证'
-                                              : '未认证',
-                                          style: TextStyle(
-                                            fontSize: 13.0,
-                                            color: Color(0xFF999999),
-                                          ),
+                                  Gaps.vGap100,
+                                  Row(
+                                    children: <Widget>[
+                                      IconButton(
+                                        icon: Image.asset(
+                                          Utils.getImgPath('faxiaoxi@3x'),
+                                          width: 30.0,
                                         ),
-                                      )),
+                                        onPressed: () {
+                                          print(11);
+                                        },
+                                      ),
+                                      IconButton(
+                                        icon: Image.asset(
+                                          Utils.getImgPath('add_icon@3x'),
+                                          width: 30.0,
+                                        ),
+                                        onPressed: () {
+                                          print(11);
+                                        },
+                                      ),
+                                    ],
+                                  )
                                 ],
                               ),
 
@@ -357,7 +283,7 @@ class _ContentState extends State<Content> {
 
                           //好友等按钮列表
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: <Widget>[
                               //纸条
                               FlatButton(
@@ -386,36 +312,6 @@ class _ContentState extends State<Content> {
                                 ),
                                 onPressed: () {
                                   _activeState(activeTap: 'zhitiao');
-                                },
-                              ),
-
-                              //好友
-                              FlatButton(
-                                color: Color(0x000000),
-                                highlightColor: Color(0x000000),
-                                colorBrightness: Brightness.dark,
-                                splashColor: Color(0x000000),
-                                shape: CircleBorder(),
-                                child: Column(
-                                  children: <Widget>[
-                                    Image.asset(
-                                      Utils.getImgPath('tianchongxing-@3x'),
-                                      width: 20.0,
-                                    ),
-                                    Gaps.vGap5,
-                                    Text(
-                                      "好友",
-                                      style: TextStyle(
-                                        color: active == 'haoyou'
-                                            ? Color(0xFFFF5A8E)
-                                            : Colors.black,
-                                        fontSize: 12.0,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                onPressed: () {
-                                  _activeState(activeTap: 'haoyou');
                                 },
                               ),
 
@@ -524,27 +420,6 @@ class _ContentState extends State<Content> {
                   )
                 : SliverPadding(padding: EdgeInsets.all(0.0)),
 
-            // 好友
-            active == 'haoyou'
-                ? SliverGrid(
-                    //Grid
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2, //Grid按两列显示
-                      //   mainAxisSpacing: 46.0, //上下间隔
-                      //   crossAxisSpacing: 60.0, // 左右间隔
-                      childAspectRatio: 1.28, // 缩放比列
-                    ),
-                    delegate: SliverChildBuilderDelegate(
-                      (BuildContext context, int index) {
-                        //创建子widget
-                        //创建列表项
-                        return _buildHaoYouItem(index);
-                      },
-                      childCount: _haoYouData.length,
-                    ),
-                  )
-                : SliverPadding(padding: EdgeInsets.all(0.0)),
-
             // 偷看数量
             active == 'toukan'
                 ? SliverFixedExtentList(
@@ -557,7 +432,7 @@ class _ContentState extends State<Content> {
                           child: Padding(
                               padding: EdgeInsets.only(left: 20.0),
                               child: Text(
-                                '已偷看过897张纸条',
+                                'Ta偷看过897张纸条',
                                 style: TextStyle(
                                   color: Color(0xFF333333),
                                   fontSize: 15.0,

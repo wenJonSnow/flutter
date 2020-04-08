@@ -166,12 +166,14 @@ class _ContentState extends State<Content> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: _tapeData.length,
-        itemExtent: 80.0, //强制高度为50.0
-        itemBuilder: (BuildContext context, int index) {
-          return _buildListItem(index);
-        });
+    return Container(
+        color: Colors.white,
+        child: ListView.builder(
+            itemCount: _tapeData.length,
+            itemExtent: 80.0, //强制高度为50.0
+            itemBuilder: (BuildContext context, int index) {
+              return _buildListItem(index);
+            }));
   }
 }
 
@@ -192,7 +194,6 @@ class _ItemState extends State<Item> {
     return Container(
       decoration: BoxDecoration(
         //背景装饰
-        color: Colors.white,
         border: Border(
           bottom: BorderSide(
             color: Color(0xFFede6f3),

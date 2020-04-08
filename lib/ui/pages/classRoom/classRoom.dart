@@ -146,37 +146,39 @@ class _ContentState extends State<Content> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: _tapeData.length,
-        // itemExtent: 176.0, //强制高度为
-        itemBuilder: (BuildContext context, int index) {
-          if (index == 0) {
-            return Container(
+    return Container(
+        color: Colors.white,
+        child: ListView.builder(
+            itemCount: _tapeData.length,
+            // itemExtent: 176.0, //强制高度为
+            itemBuilder: (BuildContext context, int index) {
+              if (index == 0) {
+                return Container(
 //           // margin: EdgeInsets.only(top: 50.0, left: 120.0), //容器外填充
-              constraints: BoxConstraints.tightFor(
-                width: double.infinity,
-                height: 200.0,
-              ), //卡片大小
-              decoration: BoxDecoration(
-                //背景装饰
-                gradient: LinearGradient(
-                  //背景径向渐变
-                  colors: [Color(0xFF8975FF), Color(0xFFFF69A7)],
-                  // begin: Alignment.topLeft,
-                  // //end: Alignment.centerLeft
-                  // end: Alignment.bottomRight //效果同上
-                ),
-              ),
-              child: Image.asset(
-                Utils.getImgPath('xueshen2'), // 登录页背景图片
-                width: double.infinity,
-                fit: BoxFit.fill,
-              ),
-            );
-          } else {
-            return _buildListItem(index);
-          }
-        });
+                  constraints: BoxConstraints.tightFor(
+                    width: double.infinity,
+                    height: 200.0,
+                  ), //卡片大小
+                  decoration: BoxDecoration(
+                    //背景装饰
+                    gradient: LinearGradient(
+                      //背景径向渐变
+                      colors: [Color(0xFF8975FF), Color(0xFFFF69A7)],
+                      // begin: Alignment.topLeft,
+                      // //end: Alignment.centerLeft
+                      // end: Alignment.bottomRight //效果同上
+                    ),
+                  ),
+                  child: Image.asset(
+                    Utils.getImgPath('xueshen2'), // 登录页背景图片
+                    width: double.infinity,
+                    fit: BoxFit.fill,
+                  ),
+                );
+              } else {
+                return _buildListItem(index);
+              }
+            }));
   }
 }
 
@@ -198,7 +200,6 @@ class _ItemState extends State<Item> {
       height: itemData['picurl'] == '' ? 160 : 300,
       decoration: BoxDecoration(
         //背景装饰
-        color: Colors.white,
         border: Border(
           bottom: BorderSide(
             color: Color(0xFFede6f3),
