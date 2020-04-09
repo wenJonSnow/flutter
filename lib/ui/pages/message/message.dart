@@ -22,20 +22,18 @@ class MessageScreenState extends State<MessageScreen> {
         automaticallyImplyLeading: false, //如果leading为null，是否自动实现默认的leading按钮
         actions: <Widget>[
           //导航栏右侧菜单
-          FlatButton(
-            color: Color(0x000000),
-            highlightColor: Color(0x000000),
-            splashColor: Color(0x000000),
+          Padding(
+            padding: EdgeInsets.only(right: 20.0),
             child: IconButton(
+              color: Color(0x000000),
+              highlightColor: Color(0x000000),
+              splashColor: Color(0x000000),
               icon: Icon(Icons.search, color: Colors.black), //自定义图标
               onPressed: () {
                 print(1);
               },
             ),
-            onPressed: () {
-              //   print(1);
-            },
-          ),
+          )
         ],
       ),
       body: Content(),

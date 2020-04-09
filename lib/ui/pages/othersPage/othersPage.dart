@@ -22,11 +22,11 @@ class OthersPageState extends State<OthersPage> {
         ),
         backgroundColor: Colors.white,
         leading: Builder(builder: (context) {
-          return FlatButton(
+          return IconButton(
               color: Color(0x000000),
               highlightColor: Color(0x000000),
               splashColor: Color(0x000000),
-              child: Image.asset(
+              icon: Image.asset(
                 Utils.getImgPath('back@3x'),
                 width: 11.0,
                 height: 19.0,
@@ -369,7 +369,7 @@ class _ContentState extends State<Content> {
                                   ],
                                 ),
                                 onPressed: () {
-                                  _activeState(activeTap: 'yaoqing');
+                                  Navigator.pushNamed(context, 'invitepage');
                                 },
                               ),
                             ],

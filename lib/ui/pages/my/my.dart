@@ -25,18 +25,21 @@ class MyScreenState extends State<MyScreen> {
         automaticallyImplyLeading: false, //如果leading为null，是否自动实现默认的leading按钮
         actions: <Widget>[
           //导航栏右侧菜单
-          FlatButton(
-            color: Color(0x000000),
-            highlightColor: Color(0x000000),
-            splashColor: Color(0x000000),
-            child: Image.asset(
-              Utils.getImgPath('setting@3x'),
-              width: 20.0,
+          Padding(
+            padding: EdgeInsets.only(right: 20.0),
+            child: IconButton(
+              color: Color(0x000000),
+              highlightColor: Color(0x000000),
+              splashColor: Color(0x000000),
+              icon: Image.asset(
+                Utils.getImgPath('setting@3x'),
+                width: 20.0,
+              ),
+              onPressed: () {
+                print(1);
+              },
             ),
-            onPressed: () {
-              print(1);
-            },
-          ),
+          )
         ],
       ),
       body: Content(),
@@ -473,7 +476,7 @@ class _ContentState extends State<Content> {
                                   ],
                                 ),
                                 onPressed: () {
-                                  _activeState(activeTap: 'yaoqing');
+                                  Navigator.pushNamed(context, 'invitepage');
                                 },
                               ),
                             ],

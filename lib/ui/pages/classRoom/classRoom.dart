@@ -33,15 +33,18 @@ class _ClassRoomState extends State<ClassRoom> {
         }),
         actions: <Widget>[
           //导航栏右侧菜单
-          FlatButton(
-            color: Color(0x000000),
-            highlightColor: Color(0x000000),
-            splashColor: Color(0x000000),
-            child: Image.asset(
-              Utils.getImgPath('search@3x'), // 搜索图片
+          Padding(
+            padding: EdgeInsets.only(right: 20.0),
+            child: IconButton(
+              // color: Color(0x000000),
+              // highlightColor: Color(0x000000),
+              // splashColor: Color(0x000000),
+              icon: Image.asset(
+                Utils.getImgPath('search@3x'), // 搜索图片
+              ),
+              onPressed: () {},
             ),
-            onPressed: () {},
-          ),
+          )
         ],
         elevation: 0,
       ),

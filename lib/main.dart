@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:male_flutter_app/ui/pages/user/user_login_page.dart';
 import 'package:male_flutter_app/ui/pages/navi/navi.dart';
 import 'package:male_flutter_app/ui/pages/othersPage/othersPage.dart';
+import 'package:male_flutter_app/ui/pages/InvitePage/InvitePage.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -23,6 +25,8 @@ class MyApp extends StatelessWidget {
           '/': (context) => UserLoginPage(),
           'navi': (context) => Navi(),
           'otherspage': (context) => OthersPage(),
+          'invitepage':(context)=>InvitePage(),
+          
         });
   }
 }

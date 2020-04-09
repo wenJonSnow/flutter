@@ -6,7 +6,7 @@ class UserLoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: new Stack(
+      body:  Stack(
         children: <Widget>[
           Image.asset(Utils.getImgPath('bgLog@3x'), // 登录页背景图片
               width: double.infinity,
