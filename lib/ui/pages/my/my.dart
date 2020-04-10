@@ -36,7 +36,7 @@ class MyScreenState extends State<MyScreen> {
                 width: 20.0,
               ),
               onPressed: () {
-                print(1);
+                Navigator.pushNamed(context, 'settingpage');
               },
             ),
           )

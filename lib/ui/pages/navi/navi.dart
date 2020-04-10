@@ -36,36 +36,48 @@ class _NaviState extends State<Navi> {
   Widget build(BuildContext context) {
     initState();
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: pages[_selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        // 底部导航
-        backgroundColor: Colors.white,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            title: Text('教室'),
-          ),
-          //   BottomNavigationBarItem(
-          //     icon: Icon(Icons.send),
-          //     title: Text('校园讯'),
-          //   ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.message),
-            title: Text('消息'),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            title: Text('我的'),
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        fixedColor: Colours.app_nv,
-        onTap: _onItemTapped,
+        resizeToAvoidBottomInset: false,
+        body: pages[_selectedIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          // 底部导航
+          backgroundColor: Colors.white,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.school),
+              title: Text('教室'),
+            ),
+            //   BottomNavigationBarItem(
+            //     icon: Icon(Icons.send),
+            //     title: Text('校园讯'),
+            //   ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.message),
+              title: Text('消息'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle),
+              title: Text('我的'),
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          fixedColor: Colours.app_nv,
+          onTap: _onItemTapped,
 
-        // 这样才会显示 3个以上item
-        type: BottomNavigationBarType.fixed,
-      ),
-    );
+          // 这样才会显示 3个以上item
+          type: BottomNavigationBarType.fixed,
+        ),
+
+        // 右下脚按钮
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Color(0xFF9C92FF),
+          child: Icon(
+            Icons.send,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            // print('22');
+            Navigator.pushNamed(context, 'publishpage');
+          },
+        ));
   }
 }
