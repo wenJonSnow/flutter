@@ -6,7 +6,9 @@ import 'package:male_flutter_app/ui/pages/othersPage/othersPage.dart';
 import 'package:male_flutter_app/ui/pages/InvitePage/InvitePage.dart';
 import 'package:male_flutter_app/ui/pages/SettingPage/SettingPage.dart';
 import 'package:male_flutter_app/ui/pages/PublishPage/PublishPage.dart';
-
+import 'package:male_flutter_app/ui/pages/LostObjectPage/LostObjectPage.dart';
+import 'package:male_flutter_app/ui/pages/AppointPage/AppointPage.dart';
+import 'package:male_flutter_app/ui/pages/LimitPage/LimitPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,6 +32,9 @@ class MyApp extends StatelessWidget {
           'invitepage': (context) => InvitePage(),
           'settingpage': (context) => SettingPage(),
           'publishpage': (context) => PublishPage(),
+          'lostobjectpage': (context) => LostObjectPage(),
+          'appointpage': (context) => AppointPage(),
+          'limitpage': (context) => LimitPage()
         });
   }
 }

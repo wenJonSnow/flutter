@@ -35,21 +35,21 @@ class _PublishPageState extends State<PublishPage> {
 
         //导航栏右侧菜单
         actions: <Widget>[
-          FlatButton.icon(
+          Padding(
+            padding: EdgeInsets.all(10.0),
+            child: FlatButton(
+              color: Color(0xFF9C92FF),
+              // highlightColor: Colors.blue[700],
+              colorBrightness: Brightness.dark,
+              splashColor: Colors.grey,
+              child: Text("发表"),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(6.0)),
               onPressed: () {
-                print('object');
+                print('222');
               },
-              icon: Icon(
-                Icons.add,
-                color: Color(0xFF9C92FF),
-              ),
-              label: Text(
-                '发表',
-                style: TextStyle(
-                  color: Color(0xFF9C92FF),
-                  fontSize: 15.0,
-                ),
-              ))
+            ),
+          ),
         ],
       ),
       body: Content(),
@@ -186,13 +186,14 @@ class _ContentState extends State<Content> {
               // 输入框
               TextField(
                   focusNode: focusNode,
+                  textInputAction: TextInputAction.done,
                   style: TextStyle(
                     color: Color(0xFF999999),
                     fontSize: 16.0,
                   ),
                   decoration: InputDecoration(
                     hintText: '写出你的心事.....',
-                    focusedBorder: UnderlineInputBorder(
+                    border: UnderlineInputBorder(
                       borderSide: BorderSide(color: Colours.app_home),
                     ),
                   ),
@@ -224,7 +225,7 @@ class _ContentState extends State<Content> {
                     onPressed: () {
                       print('22');
                       focusNode.unfocus();
-                      // _showModalBottomSheet();
+                      _showModalBottomSheet();
                     },
                   ),
 
@@ -244,7 +245,6 @@ class _ContentState extends State<Content> {
                       print('22333');
                       focusNode.unfocus();
                       _showModalBottomSheet();
-                      // _showDatePicker2();
                     },
                   ),
                 ],
@@ -283,6 +283,8 @@ class _ContentState extends State<Content> {
                             ),
                             onPressed: () {
                               print('22');
+
+                              Navigator.pushNamed(context, 'lostobjectpage');
                             },
                           )
                         ],
@@ -314,6 +316,7 @@ class _ContentState extends State<Content> {
                             ),
                             onPressed: () {
                               print('22');
+                              Navigator.pushNamed(context, 'limitpage');
                             },
                           )
                         ],
@@ -343,6 +346,7 @@ class _ContentState extends State<Content> {
                             ),
                             onPressed: () {
                               print('22');
+                              Navigator.pushNamed(context, 'limitpage');
                             },
                           )
                         ],

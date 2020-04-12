@@ -19,7 +19,7 @@ class MyScreenState extends State<MyScreen> {
         elevation: 0, // 导航栏阴影
         title: Text(
           '我的',
-          style: TextStyle(color: Colors.black, fontSize: 18),
+          style: TextStyle(color: Color(0xFF333333), fontSize: 18),
         ),
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false, //如果leading为null，是否自动实现默认的leading按钮
@@ -328,7 +328,9 @@ class _ContentState extends State<Content> {
                                       ),
                                       child: Padding(
                                         padding: EdgeInsets.symmetric(
-                                            horizontal: 12.0, vertical: 2.0),
+                                          horizontal: 12.0,
+                                          vertical: 2.0,
+                                        ),
                                         child: Text(
                                           userData['Authentication'] == true
                                               ? '已认证'
