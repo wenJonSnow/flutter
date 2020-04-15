@@ -149,24 +149,76 @@ class Content extends StatefulWidget {
 
 class _ContentState extends State<Content> {
   bool moreInputHeight = false;
-  double distans = 40.0;
+  double distans = 60.0;
+  List _tapeData = [
+    {},
+     {
+      'msg':
+          'sb',
+      'picurl': '',
+      'type': 'other'
+    },
+    {'msg': '', 'picurl': 'touxiang', 'type': 'user'},
+    {'msg': '我我对你的思念我对sdsdsd', 'picurl': '', 'type': 'user'},
+    {'msg': '', 'picurl': 'wode_toux', 'type': 'user'},
+    {'msg': '', 'picurl': 'xueshen2', 'type': 'user'},
+    {
+      'msg':
+          '我我对你的思念我对我我对你的思念我对我我对你的思念我对我我对你的思念我对我我对你的思念我对我我对你的思念我对我我对你的思念我对我我对你的思念我对我我对你的思念我对',
+      'picurl': '',
+      'type': 'user'
+    },
+    {'msg': '我我对你的思念我对sdsdsd', 'picurl': '', 'type': 'user'},
+    {
+      'msg':
+          '我我对你的思念我对我我对你的思念我对我我对你的思念我对我我对你的思念我对我我对你的思念我对我我对你的思念我对我我对你的思念我对我我对你的思念我对我我对你的思念我对',
+      'picurl': '',
+      'type': 'other'
+    },
+    {'msg': '', 'picurl': 'xueshen2', 'type': 'other'},
+    {'msg': '我我对你的思念我对sdsdsd', 'picurl': '', 'type': 'user'},
+    {'msg': '', 'picurl': 'xueshen2', 'type': 'user'},
+    {
+      'msg':
+          '我我对你的思念我对sdsdsd我我对你的思念我对sdsdsd我我对你的思念我对sdsdsd我我对你的思念我对sdsdsd我我对你的思念我对sdsdsd我我对你的思念我对sdsdsd我我对你的思念我对sdsdsd',
+      'picurl': '',
+      'type': 'user'
+    },
+  ];
+  Widget _buildListItem(index) {
+    Map item = _tapeData[index];
+    return Item(itemData: item);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: Alignment.center,
       // fit: StackFit.expand,
       children: <Widget>[
-        ListView.builder(
-            reverse: true,
-            itemCount: 20,
-            // itemExtent: 50.0, //强制高度为50.0
-            itemBuilder: (BuildContext context, int index) {
-              if (index == 0) {
-                return Padding(padding: EdgeInsets.only(bottom: distans));
-              } else {
-                return ListTile(title: Text("$index"));
-              }
-            }),
+        Container(
+            color: Color(0xFFEEEEEE),
+            child: CustomScrollView(
+              reverse: true,
+              physics: new ClampingScrollPhysics(),
+              slivers: <Widget>[
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                      //创建列表项
+
+                      if (index == 0) {
+                        return Padding(
+                            padding: EdgeInsets.only(bottom: distans));
+                      } else {
+                        return _buildListItem(index);
+                      }
+                    },
+                    childCount: _tapeData.length, //50个列表项
+                  ),
+                )
+              ],
+            )),
         Positioned(
           bottom: 0.0,
           child: Container(
@@ -198,7 +250,7 @@ class _ContentState extends State<Content> {
                       onTap: () {},
                       onChanged: (value) {
                         print(value.length);
-                     
+
                         if (value.length > 29) {
                           setState(() {
                             moreInputHeight = true;
@@ -240,6 +292,178 @@ class _ContentState extends State<Content> {
           ),
         ),
       ],
+    );
+  }
+}
+
+// 每一项渲染
+class Item extends StatefulWidget {
+  Item({Key key, this.itemData}) : super(key: key);
+
+  final Map itemData;
+  @override
+  _ItemState createState() => _ItemState();
+}
+
+class _ItemState extends State<Item> {
+  @override
+  Widget build(BuildContext context) {
+    Map itemData = widget.itemData;
+
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: 0.0,
+        vertical: 10.0,
+      ),
+      child: itemData['type'] == 'user'
+          ? Stack(
+              // 右边当前用户
+              children: <Widget>[
+                Positioned(
+                  right: 0.0,
+                  child: IconButton(
+                    icon: ClipOval(
+                      child: Image.asset(
+                        Utils.getImgPath('wode_toux'),
+                        width: 36.0, // 搜索图片
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    onPressed: () {
+                      print('22');
+                      Navigator.pushNamed(context, 'otherspage');
+                    },
+                  ),
+                ),
+
+                itemData['msg'] == ''
+                    ? Text('')
+                    : Align(
+                        alignment: Alignment.centerRight,
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(60, 6.0, 50.0, 0),
+                          child: GestureDetector(
+                            child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                    color: Color(0xFF9C92FF),
+                                    borderRadius: BorderRadius.circular(4.0)),
+                                child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: 8.0,
+                                      vertical: 8.0,
+                                    ),
+                                    child: Text(
+                                      itemData['msg'],
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 15.0,
+                                      ),
+                                    ))),
+                            onLongPress: () {
+                              print('onLongPress');
+                            },
+                          ),
+                        ),
+                      ),
+
+                //  内容图片
+                itemData['picurl'] == ''
+                    ? Text('')
+                    : Align(
+                        alignment: Alignment.centerRight,
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(60.0, 6.0, 50.0, 0),
+                          child: GestureDetector(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(4.0),
+                              child: Image.asset(
+                                Utils.getImgPath(itemData['picurl']), // 登录页背景图片
+                                // width: 260,
+                                // fit: BoxFit.fill,
+                              ),
+                            ),
+                            onTap: () {
+                              print('onTap');
+                            },
+                            onLongPress: () {
+                              print('onLongPress');
+                            },
+                          ),
+                        ),
+                      ),
+              ],
+            )
+
+          // 左边对话 用户
+          : Stack(
+              children: <Widget>[
+                Positioned(
+                  left: 0.0,
+                  child: IconButton(
+                    icon: ClipOval(
+                      child: Image.asset(
+                        Utils.getImgPath('touxiang'),
+                        width: 36.0, // 搜索图片
+                        fit: BoxFit.fill,
+
+                      ),
+                    ),
+                    onPressed: () {
+                      print('22');
+                      Navigator.pushNamed(context, 'otherspage');
+                    },
+                  ),
+                ),
+
+                itemData['msg'] == ''
+                    ? Text('')
+                    : Padding(
+                        padding: EdgeInsets.fromLTRB(50.0, 6.0, 60, 0),
+                        child: GestureDetector(
+                          child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(4.0)),
+                              child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 8.0,
+                                    vertical: 8.0,
+                                  ),
+                                  child: Text(
+                                    itemData['msg'],
+                                    style: TextStyle(
+                                        color: Color(0xFF333333),
+                                        fontSize: 15.0),
+                                  ))),
+                          onLongPress: () {
+                            print('onLongPress');
+                          },
+                        ),
+                      ),
+
+                //  内容图片
+                itemData['picurl'] == ''
+                    ? Text('')
+                    : Padding(
+                        padding: EdgeInsets.fromLTRB(50.0, 6.0, 60.0, 0),
+                        child: GestureDetector(
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(4.0),
+                            child: Image.asset(
+                              Utils.getImgPath(itemData['picurl']), // 登录页背景图片
+                              // width: 260,
+                            ),
+                          ),
+                          onTap: () {
+                            print('onTap');
+                          },
+                          onLongPress: () {
+                            print('onLongPress');
+                          },
+                        ),
+                      ),
+              ],
+            ),
     );
   }
 }
