@@ -23,6 +23,7 @@ class _ClassRoomState extends State<ClassRoom> {
             ),
           ),
         ),
+        // backgroundColor: Colors.white,
         leading: Builder(builder: (context) {
           return IconButton(
             icon: Icon(Icons.dashboard, color: Colors.white), //自定义图标
@@ -75,7 +76,7 @@ class _ContentState extends State<Content> {
       'picurl': ''
     },
     {
-      'name': '李帅妞',
+      'name': '妞',
       'pic': '',
       'partake': '53',
       'time': '2020.02.14 12:00',
@@ -173,7 +174,7 @@ class _ContentState extends State<Content> {
                     ),
                   ),
                   child: Image.asset(
-                    Utils.getImgPath('xueshen2'), // 登录页背景图片
+                    Utils.getImgPath('xueshen'), // 登录页背景图片
                     width: double.infinity,
                     fit: BoxFit.fill,
                   ),
@@ -224,18 +225,24 @@ class _ItemState extends State<Item> {
             ),
           ),
           Positioned(
-              left: 78.0,
-              top: 10.0,
+              left: 60.0,
+              top: 0.0,
               child: Row(
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(right: 10.0),
-                    child: Text(
-                      itemData['name'],
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500,
+                    child: FlatButton(
+                      // color: Colors.red,
+                      onPressed: () {
+                        Navigator.pushNamed(context, 'otherspage');
+                      },
+                      child: Text(
+                        itemData['name'],
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ),
                   ),
@@ -282,26 +289,38 @@ class _ItemState extends State<Item> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(80, 66, 18.0, 10),
-            child: Text(
-              itemData['msg'],
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(color: Color(0xFF333333), fontSize: 16.0),
-            ),
-          ),
+              padding: EdgeInsets.fromLTRB(64, 66, 18.0, 10),
+              child: FlatButton(
+                // color: Colors.red,
+                onPressed: () {
+                  Navigator.pushNamed(context, 'paperpage');
+                },
+                child: Text(
+                  itemData['msg'],
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(color: Color(0xFF333333), fontSize: 16.0),
+                ),
+              )),
 
           //  内容图片
           Padding(
-            padding: EdgeInsets.only(left: 80, top: 120),
-            child: itemData['picurl'] == ''
-                ? null
-                : Image.asset(
-                    Utils.getImgPath(itemData['picurl']), // 登录页背景图片
-                    width: 260,
-                    // fit: BoxFit.fill,
-                  ),
-          ),
+              padding: EdgeInsets.only(left: 64, top: 120),
+              child: FlatButton(
+                // color: Colors.red,
+                onPressed: () {
+                  itemData['picurl'] != ''
+                      ? Navigator.pushNamed(context, 'paperpage')
+                      : print('');
+                },
+                child: itemData['picurl'] == ''
+                    ? null
+                    : Image.asset(
+                        Utils.getImgPath(itemData['picurl']), // 登录页背景图片
+                        width: 260,
+                        // fit: BoxFit.fill,
+                      ),
+              )),
           Positioned(
             bottom: 2.0,
             right: 150.0,

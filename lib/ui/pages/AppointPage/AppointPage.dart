@@ -230,6 +230,8 @@ class _ContentState extends State<Content> {
                       alignment: Alignment.center,
                       children: <Widget>[
                         TextField(
+                          // maxLines: 2,
+                          // maxLength: 50,
                           textInputAction: TextInputAction.done,
 
                           onTap: () {

@@ -53,7 +53,7 @@ class _ContentState extends State<Content> {
       'name': '不服输的猫22222',
       'pic': '',
       'partake': '53',
-      'time': '2020.02.14 12:00',
+      'time': '12:00',
       'msg':
           '我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！',
       'location': '山东大学',
@@ -66,7 +66,7 @@ class _ContentState extends State<Content> {
       'name': '李帅妞',
       'pic': '',
       'partake': '53',
-      'time': '2020.02.14 12:00',
+      'time': '12:00',
       'msg': '我对你的思念已经无法自拔！',
       'location': '山东大学',
       'num': '15',
@@ -77,7 +77,7 @@ class _ContentState extends State<Content> {
       'name': '00后老阿姨',
       'pic': '',
       'partake': '53',
-      'time': '2020.02.14 12:00',
+      'time': '12:00',
       'msg': '我对你的思念已经无法自拔！',
       'location': '山东大学',
       'num': '15',
@@ -88,7 +88,7 @@ class _ContentState extends State<Content> {
       'name': '00后老阿姨',
       'pic': '',
       'partake': '53',
-      'time': '2020.02.14 12:00',
+      'time': '12:00',
       'msg': '我对你的思念已经无法自拔！',
       'location': '山东大学',
       'num': '15',
@@ -99,7 +99,7 @@ class _ContentState extends State<Content> {
       'name': '00后老阿姨',
       'pic': '',
       'partake': '53',
-      'time': '2020.02.14 12:00',
+      'time': '12:00',
       'msg': '我对你的思念已经无法自拔！',
       'location': '山东大学',
       'num': '15',
@@ -111,7 +111,7 @@ class _ContentState extends State<Content> {
       'name': '00后老阿姨',
       'pic': '',
       'partake': '53',
-      'time': '2020.02.14 12:00',
+      'time': '12:00',
       'msg': '我对你的思念已经无法自拔！',
       'location': '山东大学',
       'num': '15',
@@ -122,7 +122,7 @@ class _ContentState extends State<Content> {
       'name': '00后老阿姨',
       'pic': '',
       'partake': '53',
-      'time': '2020.02.14 12:00',
+      'time': '12:00',
       'msg': '我对你的思念已经无法自拔！',
       'location': '山东大学',
       'num': '15',
@@ -134,7 +134,7 @@ class _ContentState extends State<Content> {
       'name': '互撸娃大金刚',
       'pic': '',
       'partake': '53',
-      'time': '2020.02.14 12:00',
+      'time': '12:00',
       'msg': '我对你的思念已经无法自拔！',
       'location': '山东大学',
       'num': '15',
@@ -146,7 +146,7 @@ class _ContentState extends State<Content> {
       'name': '互撸娃大金刚',
       'pic': '',
       'partake': '53',
-      'time': '2020.02.14 12:00',
+      'time': '12:00',
       'msg': '我对你的思念已经无法自拔！',
       'location': '山东大学',
       'num': '15',
@@ -199,98 +199,111 @@ class _ItemState extends State<Item> {
           ),
         ),
       ),
-      child: Stack(
-        // alignment: Alignment.centerLeft, //指定未定位或部分定位widget的对齐方式
-        children: <Widget>[
-          Positioned(
-            left: 20.0,
-            top: 16.0,
-            child: ClipOval(
-              child: Image.asset(
-                Utils.getImgPath('touxiang'),
-                width: 48.0, // 搜索图片
-              ),
-            ),
-          ),
-          Positioned(
-            left: 55.0,
-            top: 13.0,
-            child: DecoratedBox(
-                decoration: BoxDecoration(
-                  color: Color(0xFFFF5A8E),
-                  borderRadius: BorderRadius.circular(10.0), //3像素圆角
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 2.0, vertical: 2.0),
-                  child: Text(
-                    itemData['partake'],
-                    style: TextStyle(
-                      fontSize: 10,
-                      color: Colors.white,
+      child: FlatButton(
+        onPressed: () {
+          Navigator.pushNamed(context, 'chatpage');
+        },
+        child: Flex(
+          direction: Axis.horizontal,
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: Stack(
+                children: <Widget>[
+                  Positioned(
+                    left: 20.0,
+                    top: 16.0,
+                    child: ClipOval(
+                      child: Image.asset(
+                        Utils.getImgPath('touxiang'),
+                        width: 48.0, // 搜索图片
+                      ),
                     ),
                   ),
-                )),
-          ),
-          Positioned(
-              left: 78.0,
-              top: 16.0,
-              child: Row(
-                children: <Widget>[
+                  Positioned(
+                    left: 55.0,
+                    top: 13.0,
+                    child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: Color(0xFFFF5A8E),
+                          borderRadius: BorderRadius.circular(10.0), //3像素圆角
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 2.0, vertical: 2.0),
+                          child: Text(
+                            itemData['partake'],
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: Colors.white,
+                            ),
+                          ),
+                        )),
+                  ),
+                  Positioned(
+                      left: 78.0,
+                      top: 16.0,
+                      child: Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10.0),
+                            child: Text(
+                              itemData['name'],
+                              style: TextStyle(
+                                fontSize: 13,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ],
+                      )),
+                  Positioned(
+                    right: 18.0,
+                    top: 10.0,
+                    child: itemData['release'] == true
+                        ? DecoratedBox(
+                            decoration: BoxDecoration(
+                              color: Color(0xFF9C92FF),
+                              borderRadius: BorderRadius.circular(30.0), //3像素圆角
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10.0, vertical: 2.0),
+                              child: Text(
+                                '即将解除好友关系',
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ))
+                        : Text(''),
+                  ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 10.0),
+                    padding: EdgeInsets.fromLTRB(80.0, 40.0, 60.0, 10.0),
                     child: Text(
-                      itemData['name'],
-                      style: TextStyle(
-                        fontSize: 13,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500,
-                      ),
+                      itemData['msg'],
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style:
+                          TextStyle(color: Color(0xFF999999), fontSize: 14.0),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 14.0,
+                    right: 18.0,
+                    child: Text(
+                      itemData['time'],
+                      style:
+                          TextStyle(color: Color(0xFF999999), fontSize: 12.0),
                     ),
                   ),
                 ],
-              )),
-          Positioned(
-            right: 18.0,
-            top: 10.0,
-            child: itemData['release'] == true
-                ? DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: Color(0xFF9C92FF),
-                      borderRadius: BorderRadius.circular(30.0), //3像素圆角
-                    ),
-                    child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10.0, vertical: 2.0),
-                      child: Text(
-                        '即将解除好友关系',
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ))
-                : Text(''),
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(80.0, 40.0, 38.0, 10.0),
-            child: Text(
-              itemData['msg'],
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(color: Color(0xFF999999), fontSize: 14.0),
+              ),
             ),
-          ),
-          Positioned(
-            bottom: 2.0,
-            right: 18.0,
-            child: Text(
-              itemData['time'],
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(color: Color(0xFF999999), fontSize: 12.0),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
