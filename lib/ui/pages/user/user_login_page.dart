@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:male_flutter_app/common/component_index.dart';
+import 'package:male_flutter_app/data/repository/user_repository.dart';
 
 class UserLoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body:  Stack(
+      body: Stack(
         children: <Widget>[
           Image.asset(Utils.getImgPath('bgLog@3x'), // 登录页背景图片
               width: double.infinity,
@@ -21,6 +22,23 @@ class UserLoginPage extends StatelessWidget {
 class LoginBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    TextEditingController _controllerName = new TextEditingController();
+    TextEditingController _controllerPwd = new TextEditingController();
+    // UserRepository userRepository = UserRepository();
+
+    // 登录请求
+    void _userLogin() {
+      String username = _controllerName.text;
+      String password = _controllerPwd.text;
+      UserRepository.login(username, password).then((onValue) {
+        print(onValue);
+        print(111);
+        Navigator.pushNamed(context, "navi");
+      }).catchError((onError) {
+        print(onError);
+      });
+    }
+
     return Column(
       children: <Widget>[
         Expanded(
@@ -48,6 +66,7 @@ class LoginBody extends StatelessWidget {
           child: Column(
             children: <Widget>[
               TextField(
+                controller: _controllerName,
                 // autofocus: true,
                 decoration: InputDecoration(
                     // labelText: "账号",
@@ -65,6 +84,7 @@ class LoginBody extends StatelessWidget {
               ),
               Gaps.vGap20,
               TextField(
+                controller: _controllerPwd,
                 decoration: InputDecoration(
                   // labelText: "密码",
                   hintText: "您的登录密码",
@@ -138,7 +158,7 @@ class LoginBody extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0)),
                 onPressed: () {
-                  Navigator.pushNamed(context, "navi");
+                  _userLogin();
                 },
               ),
             ],

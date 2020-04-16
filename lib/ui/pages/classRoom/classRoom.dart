@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:male_flutter_app/common/component_index.dart';
+import 'package:male_flutter_app/data/repository/user_repository.dart';
 
 //教室
 class ClassRoom extends StatefulWidget {
@@ -8,6 +9,17 @@ class ClassRoom extends StatefulWidget {
 }
 
 class _ClassRoomState extends State<ClassRoom> {
+  void _ss() {
+    String username = '';
+    String password = '';
+    UserRepository.login(username, password).then((onValue) {
+      print(onValue);
+      print(111);
+    }).catchError((onError) {
+      print(onError);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +41,7 @@ class _ClassRoomState extends State<ClassRoom> {
             icon: Icon(Icons.dashboard, color: Colors.white), //自定义图标
             onPressed: () {
               // 打开抽屉菜单
+              _ss();
             },
           );
         }),
