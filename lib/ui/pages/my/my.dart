@@ -16,7 +16,9 @@ class MyScreenState extends State<MyScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
         elevation: 0, // 导航栏阴影
+        centerTitle: true,
         title: Text(
           '我的',
           style: TextStyle(color: Color(0xFF333333), fontSize: 18),
@@ -243,8 +245,7 @@ class _ContentState extends State<Content> {
   Widget build(BuildContext context) {
     return Container(
         color: Colors.white,
-        child: 
-        CustomScrollView(
+        child: CustomScrollView(
           slivers: <Widget>[
             //  头部用户基本信息
             SliverFixedExtentList(
@@ -591,6 +592,5 @@ class _ContentState extends State<Content> {
                 : SliverPadding(padding: EdgeInsets.all(0.0)),
           ],
         ));
- 
   }
 }

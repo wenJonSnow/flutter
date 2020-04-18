@@ -15,7 +15,9 @@ class OthersPageState extends State<OthersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
         elevation: 0, // 导航栏阴影
+        centerTitle: true,
         title: Text(
           '无心人主页',
           style: TextStyle(color: Colors.black, fontSize: 18),

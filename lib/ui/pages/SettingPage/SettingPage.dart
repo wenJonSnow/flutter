@@ -11,7 +11,9 @@ class _SettingPageState extends State<SettingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
         elevation: 0, // 导航栏阴影
+        centerTitle: true,
         backgroundColor: Colors.white,
         title: Text(
           '设置',
@@ -137,13 +139,10 @@ class _ContentState extends State<Content> {
                   print(11);
                 },
                 padding: EdgeInsets.symmetric(
-                  horizontal: 140.0,
+                  horizontal: 100.0,
                   vertical: 20.0,
                 ),
                 color: Color(0xFFF46D75),
-                highlightColor: Color(0x000000),
-                colorBrightness: Brightness.dark,
-                splashColor: Color(0x000000),
                 child: Text(
                   "注销",
                   style: TextStyle(color: Colors.white, fontSize: 18.0),

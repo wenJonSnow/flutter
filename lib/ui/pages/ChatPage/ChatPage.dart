@@ -25,6 +25,9 @@ class ChatPageState extends State<ChatPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
+        elevation: 0, // 导航栏阴影
+        centerTitle: false,
         bottom: TabBar(
           //生成Tab菜单
           controller: _tabController,
@@ -102,8 +105,6 @@ class ChatPageState extends State<ChatPage>
           ],
         ),
 
-        elevation: 0, // 导航栏阴影
-        centerTitle: false,
         title: Text(
           '对方正在输入...',
           style: TextStyle(color: Colors.black, fontSize: 18),

@@ -16,7 +16,7 @@ class _CommentItemState extends State<CommentItem> {
     Map itemData = widget.itemData;
 
     return Container(
-      height: itemData['picurl'] == '' ? 130 : 300,
+      margin: EdgeInsets.only(left: 20.0, right: 20.0),
       decoration: BoxDecoration(
         //背景装饰
         border: Border(
@@ -27,20 +27,28 @@ class _CommentItemState extends State<CommentItem> {
         ),
       ),
       child: Stack(
-        // alignment: Alignment.centerLeft, //指定未定位或部分定位widget的对齐方式
+        overflow: Overflow.visible,
+        alignment: Alignment.bottomCenter, //指定未定位或部分定位widget的对齐方式
         children: <Widget>[
           Positioned(
-            left: 28.0,
-            top: 16.0,
-            child: ClipOval(
-              child: Image.asset(
-                Utils.getImgPath('touxiang'),
-                width: 40.0, // 搜索图片
-              ),
-            ),
+            left: 0.0,
+            top: 12.0,
+            child: IconButton(
+                padding: EdgeInsets.all(0),
+                icon: ClipOval(
+                  child: Image.asset(
+                    Utils.getImgPath('meinv'),
+                    fit: BoxFit.fill,
+                    width: 40.0,
+                    height: 40.0,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, 'otherspage');
+                }),
           ),
           Positioned(
-              left: 60.0,
+              left: 32.0,
               top: 0.0,
               child: Row(
                 children: <Widget>[
@@ -63,17 +71,16 @@ class _CommentItemState extends State<CommentItem> {
                 ],
               )),
           Positioned(
-            right: 10.0,
+            right: 0.0,
             top: 14.0,
             child: Text(
               itemData['time'],
               style: TextStyle(color: Color(0xFF999999), fontSize: 12.0),
             ),
           ),
-
           Positioned(
             top: 36.0,
-            left: 80.0,
+            left: 50.0,
             child: Image.asset(
               Utils.getImgPath('dizhi@3x'),
               width: 12.0, // 搜索图片
@@ -81,32 +88,37 @@ class _CommentItemState extends State<CommentItem> {
           ),
           Positioned(
             top: 34.0,
-            left: 100.0,
+            left: 66.0,
             child: Text(
               itemData['location'],
               style: TextStyle(color: Color(0xFF999999), fontSize: 12.0),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(80, 66, 18.0, 10),
-            child: Text(
-              itemData['msg'],
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(color: Color(0xFF333333), fontSize: 16.0),
-            ),
-          ),
-
-          //  内容图片
-          Padding(
-            padding: EdgeInsets.only(left: 80, top: 120),
-            child: itemData['picurl'] == ''
-                ? null
-                : Image.asset(
-                    Utils.getImgPath(itemData['picurl']), // 登录页背景图片
-                    width: 260,
-                    // fit: BoxFit.fill,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(
+                    top: 70.0, bottom: 10.0, left: 30.0, right: 30.0),
+                child: Text(
+                  '        ' + itemData['msg'],
+                  style: TextStyle(
+                    color: Color(0xFF333333),
+                    fontSize: 16.0,
                   ),
+                ),
+              ),
+              //  内容图片
+
+              itemData['picurl'] == ''
+                  ? Text('')
+                  : Image.asset(
+                      Utils.getImgPath(itemData['picurl']), // 登录页背景图片
+                      width: 260,
+                      // fit: BoxFit.fill,
+                    ),
+              Gaps.vGap10
+            ],
           ),
         ],
       ),

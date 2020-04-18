@@ -12,11 +12,13 @@ class _LimitPageState extends State<LimitPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0, // 导航栏阴影
+        centerTitle: false,
+        brightness: Brightness.light,
         title: Text(
           '限制',
           style: TextStyle(color: Color(0xFF333333), fontSize: 18),
         ),
-        elevation: 0, // 导航栏阴影
         backgroundColor: Colors.white,
         leading: Builder(
           builder: (context) {

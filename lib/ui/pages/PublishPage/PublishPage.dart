@@ -13,6 +13,8 @@ class _PublishPageState extends State<PublishPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0, // 导航栏阴影
+        centerTitle: false,
+        brightness: Brightness.light,
         backgroundColor: Colors.white,
 
         leading: Builder(

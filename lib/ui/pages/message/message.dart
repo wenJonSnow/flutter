@@ -13,6 +13,7 @@ class MessageScreenState extends State<MessageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        brightness: Brightness.light,
         elevation: 0, // 导航栏阴影
         centerTitle: true,
         title: Text(

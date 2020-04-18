@@ -7,6 +7,9 @@ class UserLoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      // appBar: AppBar(
+      //   brightness: Brightness.light,
+      // ),
       body: Stack(
         children: <Widget>[
           Image.asset(Utils.getImgPath('bgLog@3x'), // 登录页背景图片
@@ -107,9 +110,9 @@ class LoginBody extends StatelessWidget {
                 children: <Widget>[
                   FlatButton(
                     color: Color(0x000000),
-                    highlightColor: Colors.blue[700],
-                    colorBrightness: Brightness.dark,
-                    splashColor: Colors.grey,
+                    // highlightColor: Colors.blue[700],
+                    // colorBrightness: Brightness.dark,
+                    // splashColor: Colors.grey,
                     child: Text(
                       "忘记密码？",
                       style: TextStyle(color: Colours.app_home),
@@ -120,9 +123,6 @@ class LoginBody extends StatelessWidget {
                   ),
                   FlatButton(
                     color: Color(0x000000),
-                    highlightColor: Colors.blue[700],
-                    colorBrightness: Brightness.dark,
-                    splashColor: Colors.grey,
                     child: Text(
                       "注册",
                       style: TextStyle(color: Colours.app_home),

@@ -15,8 +15,10 @@ class PaperPageState extends State<PaperPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0, // 导航栏阴影
+        centerTitle: false,
+        brightness: Brightness.light,
         title: Text(
-          '纸条',
+          '00后老阿姨的纸条',
           style: TextStyle(color: Color(0xFF333333), fontSize: 18),
         ),
         backgroundColor: Colors.white,
@@ -24,9 +26,9 @@ class PaperPageState extends State<PaperPage> {
         leading: Builder(
           builder: (context) {
             return IconButton(
-                color: Color(0x000000),
-                highlightColor: Color(0x000000),
-                splashColor: Color(0x000000),
+                // color: Color(0x000000),
+                // highlightColor: Color(0x000000),
+                // splashColor: Color(0x000000),
                 icon: Image.asset(
                   Utils.getImgPath('back@3x'),
                   width: 11.0,
@@ -70,7 +72,7 @@ class _ContentState extends State<Content> {
     'pic': '',
     'partake': '53',
     'time': '2020.02.14 12:00',
-    'msg': '我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！',
+    'msg': '我对你的思念已经无法自拔！',
     'location': '山东大学',
     'num': '15',
     'total': '20',
@@ -90,7 +92,7 @@ class _ContentState extends State<Content> {
       'location': '山东大学',
       'num': '15',
       'total': '20',
-      'picurl': ''
+      'picurl': 'xueshen2'
     },
     {
       'name': '00后老阿姨',
@@ -153,31 +155,48 @@ class _ContentState extends State<Content> {
         child: CustomScrollView(
           slivers: <Widget>[
             //  头部用户基本信息
-            SliverFixedExtentList(
-              itemExtent: userData['picurl'] == '' ? 180 : 330.0,
+            SliverList(
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
                   return Stack(
+                    overflow: Overflow.visible,
+                    alignment: Alignment.bottomCenter,
                     children: <Widget>[
                       Positioned(
-                        left: 28.0,
+                        left: 10.0,
                         top: 16.0,
-                        child: ClipOval(
-                          child: Image.asset(
-                            Utils.getImgPath('touxiang'),
-                            width: 56.0, // 搜索图片
-                          ),
-                        ),
+                        child: FlatButton(
+                            padding: EdgeInsets.all(0.0),
+                            // color: Colors.red,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(40.0)),
+                            child: ClipOval(
+                              child: Image.asset(
+                                Utils.getImgPath('meinv'),
+                                fit: BoxFit.fill,
+                                width: 56.0,
+                                height: 56.0,
+                                // 搜索图片
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.pushNamed(context, 'otherspage');
+                            }),
                       ),
                       Positioned(
-                        left: 98.0,
+                        left: 88.0,
                         top: 16.0,
-                        child: Text(
-                          userData['name'],
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w500,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(context, 'otherspage');
+                          },
+                          child: Text(
+                            userData['name'],
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                       ),
@@ -201,59 +220,63 @@ class _ContentState extends State<Content> {
                               ),
                             )),
                       ),
-
                       Positioned(
-                        top: 44.0,
-                        left: 98.0,
+                        top: 40.0,
+                        left: 88.0,
                         child: Text(
                           userData['time'],
                           style: TextStyle(
-                              color: Color(0xFF999999), fontSize: 12.0),
+                              color: Color(0xFF999999), fontSize: 10.0),
                         ),
                       ),
                       Positioned(
-                        top: 66.0,
-                        left: 98.0,
+                        top: 58.0,
+                        left: 88.0,
                         child: Image.asset(
                           Utils.getImgPath('dizhi@3x'),
                           width: 12.0, // 搜索图片
                         ),
                       ),
                       Positioned(
-                        top: 64.0,
-                        left: 118.0,
+                        top: 58.0,
+                        left: 104.0,
                         child: Text(
                           userData['location'],
                           style: TextStyle(
-                              color: Color(0xFF999999), fontSize: 12.0),
+                              color: Color(0xFF999999), fontSize: 10.0),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(80, 96, 18.0, 10),
-                        child: Text(
-                          userData['msg'],
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              color: Color(0xFF333333), fontSize: 16.0),
-                        ),
-                      ),
-
-                      //  内容图片
-                      Padding(
-                        padding: EdgeInsets.only(
-                          left: 80,
-                          top: 150,
-                        ),
-                        child: userData['picurl'] == ''
-                            ? null
-                            : Image.asset(
-                                Utils.getImgPath(userData['picurl']), // 登录页背景图片
-                                width: 260,
-                                // fit: BoxFit.fill,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.only(
+                                top: 90.0,
+                                bottom: 10.0,
+                                left: 30.0,
+                                right: 30.0),
+                            child: Text(
+                              '        ' + userData['msg'],
+                              style: TextStyle(
+                                color: Color(0xFF333333),
+                                fontSize: 16.0,
                               ),
-                      ),
+                            ),
+                          ),
+                          //  内容图片
 
+                          userData['picurl'] == ''
+                              ? Text('')
+                              : Image.asset(
+                                  Utils.getImgPath(
+                                      userData['picurl']), // 登录页背景图片
+                                  width: 260,
+                                  // fit: BoxFit.fill,
+                                ),
+                          Gaps.vGap50
+                        ],
+                      ),
+                    
                       Positioned(
                           bottom: 0.0,
                           right: 120.0,
@@ -300,6 +323,7 @@ class _ContentState extends State<Content> {
                   return Container(
                     alignment: Alignment.centerLeft,
                     decoration: BoxDecoration(
+
                         // gradient: LinearGradient(
                         //   colors: [Color(0xFF6339FD), Color(0x000000)],
                         //   begin: Alignment.topCenter,

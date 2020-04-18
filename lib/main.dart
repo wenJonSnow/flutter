@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
 import 'package:dio/dio.dart';
-
+import 'dart:io';
 import 'http.dart'; // make dio as global top-level variable
 
 import 'package:male_flutter_app/common/component_index.dart';
@@ -21,14 +21,17 @@ import 'package:male_flutter_app/ui/pages/ChatPage/ChatPage.dart';
 import 'package:male_flutter_app/ui/pages/classRoom/classRoom.dart';
 
 void main() {
+  runApp(MaleApp());
+
   dio.options.baseUrl = Constant.server_address;
   dio.options.connectTimeout = 5000;
-  dio.options.receiveTimeout = 3000;
+  dio.options.receiveTimeout = 1000;
   dio.interceptors.add(InterceptorsWrapper(onRequest: (RequestOptions options) {
     // 在发送请求之前做一些预处理
     print(options.data);
     print(options.baseUrl);
     print(options.path);
+    print(options.receiveTimeout);
   }, onResponse: (Response response) {
     // 在返回响应数据之前做一些预处理
     return response; // continue
@@ -36,7 +39,16 @@ void main() {
     // 当请求失败时做一些预处理
     return e; //continue
   }));
-  runApp(MaleApp());
+
+  if (Platform.isAndroid) {
+    //设置Android头部的导航栏透明
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.dark, //这里必须写Brightness.dark 才是 黑色字体
+      ),
+    );
+  }
 }
 
 class MaleApp extends StatefulWidget {

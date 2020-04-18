@@ -26,6 +26,8 @@ class _ClassRoomState extends State<ClassRoom> {
       appBar: AppBar(
         // centerTitle: true,
         // title: Text('教室'),
+        elevation: 0,
+        brightness: Brightness.light,
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -64,7 +66,6 @@ class _ClassRoomState extends State<ClassRoom> {
             ),
           )
         ],
-        elevation: 0,
       ),
       body: Content(),
     );
@@ -248,7 +249,7 @@ class _ItemState extends State<Item> {
         children: <Widget>[
           Positioned(
             // left: .0,
-            top: 18.0,
+            top: 12.0,
             // child: IconButton(
             //     icon: ClipOval(
             //       child: Image.asset(
@@ -261,22 +262,34 @@ class _ItemState extends State<Item> {
             //     onPressed: () {
             //       _goOthersPage();
             //     }),
-
-            child: GestureDetector(
-                child: ClipRRect(
+            child: IconButton(
+                padding: EdgeInsets.all(0),
+                icon: ClipRRect(
                   borderRadius: BorderRadius.circular(6.0),
-                  child: Image.asset(
-                    Utils.getImgPath('meinv'),
-                    width: 36.0, // 搜索图片
-                    height: 36.0,
-                    fit: BoxFit.fill,
-                  ),
+                  child: Image.asset(Utils.getImgPath('meinv'),
+                      width: 40.0, // 搜索图片
+                      height: 40.0,
+                      fit: BoxFit.fill),
                 ),
-                onLongPress: () {},
-                onDoubleTap: () {},
-                onTap: () {
+                onPressed: () {
                   _goOthersPage();
                 }),
+
+            // child: GestureDetector(
+            //     child: ClipRRect(
+            //       borderRadius: BorderRadius.circular(6.0),
+            //       child: Image.asset(
+            //         Utils.getImgPath('meinv'),
+            //         width: 36.0, // 搜索图片
+            //         height: 36.0,
+            //         fit: BoxFit.fill,
+            //       ),
+            //     ),
+            //     onLongPress: () {},
+            //     onDoubleTap: () {},
+            //     onTap: () {
+            //       _goOthersPage();
+            //     }),
           ),
           Positioned(
               left: 50.0,
