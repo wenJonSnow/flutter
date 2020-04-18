@@ -30,13 +30,14 @@ class LoginBody extends StatelessWidget {
     void _userLogin() {
       String username = _controllerName.text;
       String password = _controllerPwd.text;
-      UserRepository.login(username, password).then((onValue) {
-        print(onValue);
-        print(111);
-        Navigator.pushNamed(context, "navi");
-      }).catchError((onError) {
-        print(onError);
-      });
+
+      // UserRepository.login(username, password).then((onValue) {
+      //   print(onValue);
+      //   print(111);
+      Navigator.pushNamed(context, "navi");
+      // }).catchError((onError) {
+      //   print(onError);
+      // });
     }
 
     return Column(
@@ -132,34 +133,33 @@ class LoginBody extends StatelessWidget {
                   )
                 ],
               ),
-              Gaps.vGap20,
-              FlatButton(
-                color: Color(0x000000),
-                // highlightColor: Colors.blue[700],
-                // colorBrightness: Brightness.dark,
-                // splashColor: Colors.red,
-
-                child: DecoratedBox(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage(Utils.getImgPath('log@3x')),
-                          fit: BoxFit.fill),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 140.0, vertical: 16.0),
-                      child: InkWell(
-                        child: Text(
-                          '登录',
-                          style: TextStyle(color: Colors.white, fontSize: 18),
-                        ),
-                      ),
-                    )),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)),
-                onPressed: () {
-                  _userLogin();
-                },
+              Gaps.vGap50,
+              Container(
+                width: 300.0,
+                height: 60.0,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  image: DecorationImage(
+                    image: AssetImage(Utils.getImgPath('log@3x')),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                alignment: Alignment.center,
+                child: FlatButton(
+                  onPressed: () {
+                    _userLogin();
+                  },
+                  child: Text(
+                    '登录',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 120.0,
+                    vertical: 16.0,
+                  ),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                ),
               ),
             ],
           ),

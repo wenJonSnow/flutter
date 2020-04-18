@@ -243,7 +243,8 @@ class _ContentState extends State<Content> {
   Widget build(BuildContext context) {
     return Container(
         color: Colors.white,
-        child: CustomScrollView(
+        child: 
+        CustomScrollView(
           slivers: <Widget>[
             //  头部用户基本信息
             SliverFixedExtentList(
@@ -590,5 +591,6 @@ class _ContentState extends State<Content> {
                 : SliverPadding(padding: EdgeInsets.all(0.0)),
           ],
         ));
+ 
   }
 }

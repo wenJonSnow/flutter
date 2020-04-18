@@ -18,6 +18,7 @@ import 'package:male_flutter_app/ui/pages/AppointPage/AppointPage.dart';
 import 'package:male_flutter_app/ui/pages/LimitPage/LimitPage.dart';
 import 'package:male_flutter_app/ui/pages/PaperPage/PaperPage.dart';
 import 'package:male_flutter_app/ui/pages/ChatPage/ChatPage.dart';
+import 'package:male_flutter_app/ui/pages/classRoom/classRoom.dart';
 
 void main() {
   dio.options.baseUrl = Constant.server_address;

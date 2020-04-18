@@ -1,11 +1,8 @@
 class MaleApi {
   // 注册
 
-  /// 获取公众号列表 http://wanandroid.com/wxarticle/chapters/json
   static const String WXARTICLE_CHAPTERS = "wxarticle/chapters";
 
-  /// 查看某个公众号历史数据 http://wanandroid.com/wxarticle/list/405/1/json
-  /// 在某个公众号中搜索历史文章 http://wanandroid.com/wxarticle/list/405/1/json?k=Java
   static const String WXARTICLE_LIST = "wxarticle/list";
 
   static const String user_register = "user/register"; //注册

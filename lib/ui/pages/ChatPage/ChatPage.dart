@@ -29,9 +29,11 @@ class ChatPageState extends State<ChatPage>
           //生成Tab菜单
           controller: _tabController,
           isScrollable: true,
+          labelPadding: EdgeInsets.all(0),
           indicatorColor: Color(0x000000),
           tabs: <Widget>[
             FlatButton(
+              padding: EdgeInsets.all(0),
               child: Column(
                 children: <Widget>[
                   Image.asset(
@@ -47,6 +49,7 @@ class ChatPageState extends State<ChatPage>
               onPressed: () {},
             ),
             FlatButton(
+              padding: EdgeInsets.all(0),
               child: Column(
                 children: <Widget>[
                   Image.asset(
@@ -63,6 +66,7 @@ class ChatPageState extends State<ChatPage>
               onPressed: () {},
             ),
             FlatButton(
+              padding: EdgeInsets.all(0),
               child: Column(
                 children: <Widget>[
                   Image.asset(
@@ -79,6 +83,7 @@ class ChatPageState extends State<ChatPage>
               onPressed: () {},
             ),
             FlatButton(
+              padding: EdgeInsets.all(0),
               child: Column(
                 children: <Widget>[
                   Image.asset(
@@ -148,16 +153,10 @@ class Content extends StatefulWidget {
 }
 
 class _ContentState extends State<Content> {
-  bool moreInputHeight = false;
   double distans = 60.0;
   List _tapeData = [
     {},
-     {
-      'msg':
-          'sb',
-      'picurl': '',
-      'type': 'other'
-    },
+    {'msg': 'sb', 'picurl': '', 'type': 'other'},
     {'msg': '', 'picurl': 'touxiang', 'type': 'user'},
     {'msg': '我我对你的思念我对sdsdsd', 'picurl': '', 'type': 'user'},
     {'msg': '', 'picurl': 'wode_toux', 'type': 'user'},
@@ -190,17 +189,21 @@ class _ContentState extends State<Content> {
     return Item(itemData: item);
   }
 
+  double _screenWidth() {
+    return MediaQuery.of(context).size.width;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
-      alignment: Alignment.center,
+      alignment: Alignment.bottomCenter,
       // fit: StackFit.expand,
       children: <Widget>[
         Container(
             color: Color(0xFFEEEEEE),
             child: CustomScrollView(
               reverse: true,
-              physics: new ClampingScrollPhysics(),
+              physics: ClampingScrollPhysics(),
               slivers: <Widget>[
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
@@ -219,76 +222,83 @@ class _ContentState extends State<Content> {
                 )
               ],
             )),
-        Positioned(
-          bottom: 0.0,
-          child: Container(
-            width: 640, // 这个地方 有bug
-            decoration: BoxDecoration(
-              //背景装饰
-              color: Colors.white,
 
-              border: Border(
-                top: BorderSide(
-                  color: Color(0xFFede6f3),
-                  width: 1.0,
-                ),
+        // 底部输入框
+
+        Container(
+          decoration: BoxDecoration(
+            //背景装饰
+            color: Colors.white,
+            border: Border(
+              top: BorderSide(
+                color: Color(0xFFede6f3),
+                width: 1.0,
               ),
             ),
-            child: Row(
-              // mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(4.0),
-                  child: Container(
-                    height: moreInputHeight ? null : 40.0,
-                    width: 300,
-                    child: TextField(
-                      maxLines: moreInputHeight ? null : 1,
-                      textInputAction: TextInputAction.done,
-                      onTap: () {},
-                      onChanged: (value) {
-                        print(value.length);
-
-                        if (value.length > 29) {
-                          setState(() {
-                            moreInputHeight = true;
-                          });
-                        } else {
-                          setState(() {
-                            moreInputHeight = false;
-                          });
-                        }
-                      },
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(4.0),
-                          borderSide: BorderSide.none,
-                        ),
-                        filled: true,
-                        fillColor: Color(0xFFEEEEEE),
+          ),
+          child: Flex(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            direction: Axis.horizontal,
+            children: <Widget>[
+              Expanded(
+                flex: 2,
+                child: Container(
+                  constraints: BoxConstraints(
+                    maxHeight: 140.0,
+                    // maxWidth: _screenWidth(),
+                    minHeight: 40.0,
+                    // minWidth: _screenWidth(),
+                  ),
+                  padding: EdgeInsets.only(left: 16.0, top: 4.0, bottom: 4.0),
+                  child: TextField(
+                    maxLines: null,
+                    keyboardType: TextInputType.multiline,
+                    textInputAction: TextInputAction.done,
+                    onTap: () {},
+                    onChanged: (value) {
+                      print(value.length);
+                    },
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(
+                        vertical: 6.0,
+                        horizontal: 6.0,
                       ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4.0),
+                        borderSide: BorderSide.none,
+                      ),
+                      filled: true,
+                      fillColor: Color(0xFFEEEEEE),
                     ),
                   ),
                 ),
-                IconButton(
-                  icon: Image.asset(
-                    Utils.getImgPath('biaoqing@3x'),
-                    width: 24.0,
-                  ),
-                  onPressed: () {},
-                ),
-                IconButton(
-                  icon: Image.asset(
-                    Utils.getImgPath('mkf@3x'),
-                    width: 20.0,
-                  ),
-                  onPressed: () {},
-                ),
-              ],
-              // mainAxisAlignment: MainAxisAlignment.spaceAround, //均分底部导航栏横向空间
-            ),
+              ),
+              Expanded(
+                  flex: 1,
+                  child: Container(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          icon: Image.asset(
+                            Utils.getImgPath('biaoqing@3x'),
+                            width: 24.0,
+                          ),
+                          onPressed: () {},
+                        ),
+                        IconButton(
+                          icon: Image.asset(
+                            Utils.getImgPath('mkf@3x'),
+                            width: 20.0,
+                          ),
+                          onPressed: () {},
+                        ),
+                      ],
+                      // mainAxisAlignment: MainAxisAlignment.spaceAround, //均分底部导航栏横向空间
+                    ),
+                  )),
+            ],
           ),
         ),
       ],
@@ -405,7 +415,6 @@ class _ItemState extends State<Item> {
                         Utils.getImgPath('touxiang'),
                         width: 36.0, // 搜索图片
                         fit: BoxFit.fill,
-
                       ),
                     ),
                     onPressed: () {

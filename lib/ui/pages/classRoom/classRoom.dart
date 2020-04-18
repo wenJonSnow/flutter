@@ -24,7 +24,8 @@ class _ClassRoomState extends State<ClassRoom> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('教室'),
+        // centerTitle: true,
+        // title: Text('教室'),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -41,7 +42,8 @@ class _ClassRoomState extends State<ClassRoom> {
             icon: Icon(Icons.dashboard, color: Colors.white), //自定义图标
             onPressed: () {
               // 打开抽屉菜单
-              _ss();
+              Navigator.pushNamed(context, '/');
+              // _ss();
             },
           );
         }),
@@ -53,9 +55,11 @@ class _ClassRoomState extends State<ClassRoom> {
               // color: Color(0x000000),
               // highlightColor: Color(0x000000),
               // splashColor: Color(0x000000),
-              icon: Image.asset(
-                Utils.getImgPath('search@3x'), // 搜索图片
-              ),
+              icon: Icon(Icons.search),
+
+              // icon: Image.asset(
+              //   Utils.getImgPath('search@3x'), // 搜索图片
+              // ),
               onPressed: () {},
             ),
           )
@@ -75,84 +79,90 @@ class Content extends StatefulWidget {
 
 class _ContentState extends State<Content> {
   List _tapeData = [
-    {},
     {
       'name': '不服输的猫22222',
       'pic': '',
       'partake': '53',
-      'time': '2020.02.14 12:00',
+      'time': '12:00',
       'msg':
           '我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！我对你的思念已经无法自拔！',
       'location': '山东大学',
       'num': '15',
       'total': '20',
-      'picurl': ''
+      'picurl': '',
+      'ispickup': false
     },
     {
       'name': '妞',
       'pic': '',
       'partake': '53',
-      'time': '2020.02.14 12:00',
+      'time': '12:00',
       'msg': '我对你的思念已经无法自拔！',
       'location': '山东大学',
       'num': '15',
       'total': '20',
-      'picurl': 'meinv'
+      'picurl': 'meinv',
+      'ispickup': false
     },
     {
       'name': '00后老阿姨',
       'pic': '',
       'partake': '53',
-      'time': '2020.02.14 12:00',
+      'time': '12:00',
       'msg': '我对你的思念已经无法自拔！',
       'location': '山东大学',
       'num': '15',
       'total': '20',
-      'picurl': ''
+      'picurl': '',
+      'ispickup': true
     },
     {
       'name': '00后老阿姨',
       'pic': '',
       'partake': '53',
-      'time': '2020.02.14 12:00',
+      'time': '12:00',
       'msg': '我对你的思念已经无法自拔！',
       'location': '山东大学',
       'num': '15',
       'total': '20',
-      'picurl': ''
+      'picurl': '',
+      'ispickup': false
     },
     {
       'name': '00后老阿姨',
       'pic': '',
       'partake': '53',
-      'time': '2020.02.14 12:00',
+      'time': '12:00',
       'msg': '我对你的思念已经无法自拔！',
       'location': '山东大学',
       'num': '15',
       'total': '20',
-      'picurl': 'meinv'
+      'picurl': 'meinv',
+      'ispickup': true
     },
     {
       'name': '00后老阿姨',
       'pic': '',
       'partake': '53',
-      'time': '2020.02.14 12:00',
+      'time': '12:00',
       'msg': '我对你的思念已经无法自拔！',
       'location': '山东大学',
       'num': '15',
       'total': '20',
-      'picurl': ''
+      'picurl': '',
+      'ispickup': true
     },
     {
       'name': '00后老阿姨',
       'pic': '',
       'partake': '53',
-      'time': '2020.02.14 12:00',
+      'time': '12:00',
       'msg': '我对你的思念已经无法自拔！',
       'location': '山东大学',
       'num': '15',
       'total': '20',
-      'picurl': 'xueshen2'
+      'picurl': 'xueshen2',
+      'ispickup': true
     },
   ];
 
@@ -165,37 +175,39 @@ class _ContentState extends State<Content> {
   Widget build(BuildContext context) {
     return Container(
         color: Colors.white,
-        child: ListView.builder(
-            itemCount: _tapeData.length,
-            // itemExtent: 176.0, //强制高度为
-            itemBuilder: (BuildContext context, int index) {
-              if (index == 0) {
-                return Container(
-//           // margin: EdgeInsets.only(top: 50.0, left: 120.0), //容器外填充
-                  constraints: BoxConstraints.tightFor(
-                    width: double.infinity,
-                    height: 200.0,
-                  ), //卡片大小
-                  decoration: BoxDecoration(
-                    //背景装饰
-                    gradient: LinearGradient(
-                      //背景径向渐变
-                      colors: [Color(0xFF8975FF), Color(0xFFFF69A7)],
-                      // begin: Alignment.topLeft,
-                      // //end: Alignment.centerLeft
-                      // end: Alignment.bottomRight //效果同上
+        child: CustomScrollView(
+          slivers: <Widget>[
+            //  顶部图片
+            SliverFixedExtentList(
+              itemExtent: 200.0,
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  //创建列表项
+                  return Container(
+                    child: Image.asset(
+                      Utils.getImgPath('xueshen2'), // 登录页背景图片
+                      width: double.infinity,
+                      height: double.infinity,
+                      fit: BoxFit.fill,
                     ),
-                  ),
-                  child: Image.asset(
-                    Utils.getImgPath('xueshen'), // 登录页背景图片
-                    width: double.infinity,
-                    fit: BoxFit.fill,
-                  ),
-                );
-              } else {
-                return _buildListItem(index);
-              }
-            }));
+                  );
+                },
+                childCount: 1, //50个列表项
+              ),
+            ),
+
+            // 列表
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  //创建列表项
+                  return _buildListItem(index);
+                },
+                childCount: _tapeData.length, //50个列表项
+              ),
+            )
+          ],
+        ));
   }
 }
 
@@ -209,18 +221,25 @@ class Item extends StatefulWidget {
 }
 
 class _ItemState extends State<Item> {
+  // 去别人主页
+  void _goOthersPage() {
+    Navigator.pushNamed(context, 'otherspage');
+  }
+
   @override
   Widget build(BuildContext context) {
     Map itemData = widget.itemData;
 
     return Container(
+      margin: EdgeInsets.only(left: 10.0, right: 10.0),
       height: itemData['picurl'] == '' ? 160 : 300,
       decoration: BoxDecoration(
         //背景装饰
+        color: Colors.white,
         border: Border(
           bottom: BorderSide(
             color: Color(0xFFede6f3),
-            width: 1.0,
+            width: 2.0,
           ),
         ),
       ),
@@ -228,37 +247,59 @@ class _ItemState extends State<Item> {
         // alignment: Alignment.centerLeft, //指定未定位或部分定位widget的对齐方式
         children: <Widget>[
           Positioned(
-            left: 28.0,
-            top: 16.0,
-            child: ClipOval(
-              child: Image.asset(
-                Utils.getImgPath('touxiang'),
-                width: 40.0, // 搜索图片
-              ),
-            ),
+            // left: .0,
+            top: 18.0,
+            // child: IconButton(
+            //     icon: ClipOval(
+            //       child: Image.asset(
+            //         Utils.getImgPath('touxiang'),
+            //         width: 40.0, // 搜索图片
+            //          height: 40.0,
+            //          fit:BoxFit.fill
+            //       ),
+            //     ),
+            //     onPressed: () {
+            //       _goOthersPage();
+            //     }),
+
+            child: GestureDetector(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(6.0),
+                  child: Image.asset(
+                    Utils.getImgPath('meinv'),
+                    width: 36.0, // 搜索图片
+                    height: 36.0,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                onLongPress: () {},
+                onDoubleTap: () {},
+                onTap: () {
+                  _goOthersPage();
+                }),
           ),
           Positioned(
-              left: 60.0,
-              top: 0.0,
+              left: 50.0,
+              top: 14.0,
               child: Row(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(right: 10.0),
-                    child: FlatButton(
-                      // color: Colors.red,
-                      onPressed: () {
-                        Navigator.pushNamed(context, 'otherspage');
-                      },
-                      child: Text(
-                        itemData['name'],
-                        style: TextStyle(
-                          fontSize: 13,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
+                      padding: const EdgeInsets.only(right: 10.0),
+                      child: GestureDetector(
+                        onLongPress: () {},
+                        onDoubleTap: () {},
+                        onTap: () {
+                          _goOthersPage();
+                        },
+                        child: Text(
+                          itemData['name'],
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
+                      )),
                   DecoratedBox(
                       decoration: BoxDecoration(
                         color: Color(0xFF9C92FF),
@@ -278,36 +319,42 @@ class _ItemState extends State<Item> {
                 ],
               )),
           Positioned(
-            right: 18.0,
-            top: 10.0,
+            right: 8.0,
+            top: 16.0,
             child: Text(
               itemData['time'],
               style: TextStyle(color: Color(0xFF999999), fontSize: 10.0),
             ),
           ),
           Positioned(
-            top: 36.0,
-            left: 78.0,
-            child: Image.asset(
-              Utils.getImgPath('dizhi@3x'),
-              width: 12.0, // 搜索图片
+            top: 38.0,
+            left: 50.0,
+            child: Row(
+              // mainAxisSize: MainAxisSize.max,
+              // mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                Image.asset(
+                  Utils.getImgPath('dizhi@3x'),
+                  width: 12.0, // 搜索图片
+                ),
+                Gaps.hGap5,
+                Text(
+                  itemData['location'],
+                  style: TextStyle(color: Color(0xFF999999), fontSize: 12.0),
+                ),
+              ],
             ),
           ),
-          Positioned(
-            top: 34.0,
-            left: 94.0,
-            child: Text(
-              itemData['location'],
-              style: TextStyle(color: Color(0xFF999999), fontSize: 12.0),
-            ),
-          ),
+
           Padding(
-              padding: EdgeInsets.fromLTRB(64, 66, 18.0, 10),
+              padding: EdgeInsets.fromLTRB(34, 66, 18.0, 10),
               child: FlatButton(
                 // color: Colors.red,
                 onPressed: () {
                   Navigator.pushNamed(context, 'paperpage');
                 },
+                onLongPress: () {},
                 child: Text(
                   itemData['msg'],
                   maxLines: 2,
@@ -318,7 +365,7 @@ class _ItemState extends State<Item> {
 
           //  内容图片
           Padding(
-              padding: EdgeInsets.only(left: 64, top: 120),
+              padding: EdgeInsets.only(left: 34, top: 120),
               child: FlatButton(
                 // color: Colors.red,
                 onPressed: () {
@@ -334,28 +381,31 @@ class _ItemState extends State<Item> {
                         // fit: BoxFit.fill,
                       ),
               )),
-          Positioned(
-            bottom: 2.0,
-            right: 150.0,
-            child: FlatButton.icon(
-              icon: Icon(
-                Icons.pan_tool,
-                color: Color(0xFF999999),
-                size: 12,
-              ),
-              label: Text(
-                "捡取",
-                style: TextStyle(
-                  color: Color(0xFF999999),
-                  fontSize: 12.0,
-                ),
-              ),
-              onPressed: () => print('2'),
-            ),
-          ),
+
+          itemData['ispickup']
+              ? Positioned(
+                  bottom: 2.0,
+                  right: 140.0,
+                  child: FlatButton.icon(
+                    icon: Icon(
+                      Icons.pan_tool,
+                      color: Color(0xFF999999),
+                      size: 12,
+                    ),
+                    label: Text(
+                      "捡取",
+                      style: TextStyle(
+                        color: Color(0xFF999999),
+                        fontSize: 12.0,
+                      ),
+                    ),
+                    onPressed: () => print('2'),
+                  ),
+                )
+              : Text(''),
           Positioned(
               bottom: 16.0,
-              right: 120.0,
+              right: 110.0,
               child: Icon(
                 Icons.person_pin_circle,
                 color: Color(0xFF999999),
@@ -363,7 +413,7 @@ class _ItemState extends State<Item> {
               )),
           Positioned(
             bottom: 18.0,
-            right: 18.0,
+            right: 8.0,
             child: Text.rich(TextSpan(children: [
               TextSpan(
                 text: "已捡对象数: ",
