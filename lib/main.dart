@@ -41,6 +41,7 @@ void main() {
   }));
 
   if (Platform.isAndroid) {
+    
     //设置Android头部的导航栏透明
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
