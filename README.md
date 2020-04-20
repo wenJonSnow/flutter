@@ -8,7 +8,7 @@ A new Flutter project.
 打开 ios 模拟器 open -a Simulator
 flutter run 启动
 
-  - [flutter实战](flutter实战https://book.flutterchina.club/)
+  - [flutter实战](https://book.flutterchina.club/)
 
 
 ## Getting Started
